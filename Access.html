@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+    
+
+
+    html * {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    p {
+
+        text-align: center;
+    }
+
+    h1 {
+        margin: 2rem 0 4rem;
+        text-align: center;
+    }
+
+
+    .big {
+
+        font-size: 3rem;
+    }
+
+
+    input {
+        border-radius: 8px;
+        border: none;
+        background-color: white;
+        margin: 0.5rem;
+        width: 300px;
+        height: 48px;
+        padding: 0px 10px;
+    }
+
+    input:focus {
+        outline: 2px solid #007dbc;
+    }
+
+    .button {
+        background-color: #007dbc;
+        border-color: #007dbc;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2rem;
+        width: 2rem;
+        border-radius: 4px;
+    }
+
+    img {
+        margin: auto;
+        
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    #info {
+        border-radius: 8px;
+        padding: 20px 30px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        margin:auto;
+        justify-content: center;
+        width: 50%;
+        background-color: rgb(231, 243, 249);
+    }
+
+    #hero {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+
+    }
+
+    #settings {
+        
+
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .remark {
+        color: red;
+        font-size: 13px;
+        margin: -15px 20px 50px 20px;
+    }
+</style>
+
+<body>
+
+    <div id="hero">
+        <div id="Banner">
+            
+            <img src="Web-trends.png" alt="This image is the logo of our inscription 
+            page and it shows a running road with sentence which it says Defi speed."
+                style="height: 8rem; width: 15rem;"/>
+        </div>
+        
+    </div>
+    
+    
+    <form id="info">
+        <div id="settings">
+            <button aria-label="zoom in" role="button" id="big" class="big-font-size"><img src="Zoom-in.png" /></button>
+    
+            <button aria-label="zoom out" role="button" id="small" class="small-font-size"><img src="Zoom-out.png" /></button>
+        </div>
+
+        <H1>Hier you can make your inscription </H1>
+
+        <label for="FamilyName"> Family Name : </label></br>
+
+        <input type="text" id="FamilyName" placeholder="Müller" aria-describedby="FamilyName-error" aria-invalid="true"
+            required /></br>
+
+        <p class="remark" id="FamilyName-error" role="alert"></p>
+
+        <label for="Name"> Name : </label></br>
+
+        <input type="text" id="Name" placeholder="John" aria-describedby="Name-error" aria-invalid="true"
+            required /></br>
+
+        <p class="remark" id="Name-error" role="alert"></p>
+
+        <label for="DateOfBirth"> Date of Birth : </label></br>
+
+        <input type="date" id="DateOfBirth" name="DateOfBirth" max="2300-12-31" aria-describedby="DateOfBirth-error"
+            aria-invalid="true" required /></br>
+
+        <p class="remark" id="DateOfBirth-error" role="alert"></p>
+
+        <label for="EmailAdress">Email Adress </label></br>
+
+        <input type="text" id="EmailAdress" placeholder="JohnMüller@Email.com" aria-describedby="EmailAdress-error"
+            aria-invalid="true" required /></br>
+
+        <p class="remark" id="EmailAdress-error" role="alert"></p>
+
+        <button role="button" class="button" style="width: 300px;margin: 8px;" type="submit" value="Submit" onclick="errorMsg()">Submit</button>
+
+
+    </form>
+    
+
+
+
+</body>
+<script>
+    document.querySelector("#big").addEventListener("click", function () {
+        const background = document.querySelector("#info");
+
+        const isBig = background.classList.contains("big");
+
+        background.classList.add("big");
+
+    });
+    document.querySelector("#small").addEventListener("click", function () {
+        const background = document.querySelector("#info");
+
+        const isBig = background.classList.contains("big");
+
+        if (isBig) {
+            background.classList.remove("big");
+
+        }
+
+    });
+
+    //create the valid mark for Input//
+    function errorMsg() {
+        
+        const message1 = document.getElementById("FamilyName-error");
+        message1.innerHTML = "";
+
+        let x1 = document.getElementById("FamilyName").value;
+
+
+        try {
+            if (x1.trim() == "") throw "Family Name case is missing ! ";
+            if (!isNaN(x1)) throw "Family Name case don't accept numbers please try again !";
+        }
+        catch (err) {
+            message1.innerHTML = err;
+        }
+       
+
+
+
+        const message2 = document.getElementById("Name-error");
+        message2.innerHTML = "";
+
+        let x2 = document.getElementById("Name").value;
+        try {
+            if (x2.trim() == "") throw "Name case is missing ! ";
+            if (!isNaN(x2)) throw "Name case don't accept numbers please try again !";
+        }
+        catch (err) {
+            message2.innerHTML = err;
+        }
+
+
+        const message3 = document.getElementById("EmailAdress-error");
+        message3.innerHTML = "";
+
+        let x3 = document.getElementById("EmailAdress").value;
+        try {
+            if (x3.trim() == "") throw "Email adress case is missing ! ";
+            if (!isNaN(x3)) throw "Email adress case don't accept numbers please try again !";
+        }
+        catch (err) {
+            message3.innerHTML = err;
+        }
+
+
+        const message4 = document.getElementById("DateOfBirth-error");
+        message4.innerHTML = "";
+
+        let x4 = document.getElementById("DateOfBirth").value;
+        try {
+            if (x4.trim() == "") throw "Date Of Birth case is missing ! ";
+            if (isNaN(x4)) throw " Date Of Birth case can accept only numbers please try again !";
+
+        }
+        catch (err) {
+            message4.innerHTML = err;
+        }
+
+
+    }
+
+
+</script>
+
+
+</html>
